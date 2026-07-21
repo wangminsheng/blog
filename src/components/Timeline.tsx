@@ -31,7 +31,7 @@ export default function Timeline() {
         >
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">工作经历</h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            10年+工作经验，从运维专员到全栈运维工程师的成长历程
+            10年+工作经验，从学徒到全栈运维工程师的成长历程（全栈是目标）
           </p>
         </motion.div>
 

@@ -12,15 +12,17 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: '1',
-    name: '环境检测工具(使用AI写的)',
-    description: '基于 Electron + React + TypeScript 开发的 3DCloudAgent 环境检测工具，提供可视化界面展示系统环境检测结果，包括系统信息、软件检测、网络检测、存储检测等功能。',
-    techStack: ['Electron', 'React', 'TypeScript', 'TailwindCSS', 'Vite'],
+    name: 'Ubuntu Server 自动化部署',
+    description: '自定义构建 Ubuntu 16.04|18.04|22.04|24.04|26.04 自动化安装 ISO 镜像，实现项目中离线环境的快速安装部署。',
+    techStack: ['Shell Script', 'Ubuntu', 'Autoinstall', 'ISO定制', 'Cloud-Init'],
     highlights: [
-      '自动检测系统环境配置',
-      '多端口连通性检测（响应时间<1秒）',
-      'SMB协议版本检测',
+      '解决 Ubuntu Server自动化快速安装和配置',
+      '自定义构建 ISO 安装镜像',
+	  '自动离线安装docker环境',
+      '为支持离线环境快速部署各种其他环境构建基础支持',
+      '编写自动化构建脚本',
     ],
-    year: '2026',
+    year: '2018',
   },
   {
     id: '2',

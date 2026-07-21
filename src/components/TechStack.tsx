@@ -49,7 +49,7 @@ export default function TechStack() {
       case 'proficient':
         return '熟练';
       case 'familiar':
-        return '了解';
+        return '了解[AI中会用而已]';
       default:
         return level;
     }
