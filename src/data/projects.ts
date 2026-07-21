@@ -12,34 +12,32 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: '1',
-    name: '环境检测工具',
+    name: '环境检测工具(使用AI写的)',
     description: '基于 Electron + React + TypeScript 开发的 3DCloudAgent 环境检测工具，提供可视化界面展示系统环境检测结果，包括系统信息、软件检测、网络检测、存储检测等功能。',
     techStack: ['Electron', 'React', 'TypeScript', 'TailwindCSS', 'Vite'],
     highlights: [
       '自动检测系统环境配置',
       '多端口连通性检测（响应时间<1秒）',
       'SMB协议版本检测',
-      '支持群晖/华为/龙存等多种存储类型',
     ],
-    year: '2024',
+    year: '2026',
   },
   {
     id: '2',
-    name: '纵骥云办公',
+    name: 'AI云办公(使用AI写的)',
     description: '基于 Electron 开发的云办公客户端，集成远程桌面、文件管理、环境检测等功能，为设计云平台用户提供一站式办公体验。',
     techStack: ['Electron', 'React', 'TypeScript', 'TailwindCSS'],
     highlights: [
-      '集成 NoVNC 实现远程桌面',
       '支持 RDP 协议连接',
       '云盘挂载状态监控',
-      '离线部署支持',
+      '支持免安装',
     ],
-    year: '2024',
+    year: '2026',
   },
   {
     id: '3',
-    name: 'certimate',
-    description: '基于 Go + React 开发的证书管理工具，提供证书签发、验证、吊销等功能，支持 CLI 和 Web 两种操作方式。',
+    name: 'Resolution-Dpi(使用AI写的)',
+    description: '一个用于管理 Windows 显示器分辨率和 DPI 缩放的命令行工具',
     techStack: ['Go', 'React', 'TypeScript', 'Vite'],
     highlights: [
       '支持多证书格式（PEM/DER/PFX）',
@@ -51,7 +49,7 @@ export const projects: Project[] = [
   },
   {
     id: '4',
-    name: 'd3_screen',
+    name: '小工具-d3_screen',
     description: '基于 Rust 开发的屏幕分辨率和 DPI 检测工具，用于获取和设置显示器的分辨率和缩放比例。',
     techStack: ['Rust', 'Windows API'],
     highlights: [
@@ -60,7 +58,7 @@ export const projects: Project[] = [
       'DPI 缩放比例检测',
       '高性能本地代码',
     ],
-    year: '2023',
+    year: '2025',
   },
   {
     id: '5',

@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Download, Github, Linkedin, FileText } from 'lucide-react';
-import { contactInfo } from '../data/contact';
+import { Mail, Phone, MapPin, Download, Github, FileText, Globe } from 'lucide-react';
+import { contactInfo, socialLinks } from '../data/contact';
 
 export default function Contact() {
   return (
@@ -62,22 +62,19 @@ export default function Contact() {
               </div>
 
               <div className="flex gap-4 mt-6">
-                <motion.a
-                  href="#"
-                  className="flex items-center gap-2 px-4 py-2 bg-tech-blue/10 text-tech-blue rounded-lg hover:bg-tech-blue/20 transition-colors"
-                  whileHover={{ scale: 1.05 }}
-                >
-                  <Github size={18} />
-                  GitHub
-                </motion.a>
-                <motion.a
-                  href="#"
-                  className="flex items-center gap-2 px-4 py-2 bg-tech-blue/10 text-tech-blue rounded-lg hover:bg-tech-blue/20 transition-colors"
-                  whileHover={{ scale: 1.05 }}
-                >
-                  <Linkedin size={18} />
-                  LinkedIn
-                </motion.a>
+                {socialLinks.map((link) => (
+                  <motion.a
+                    key={link.name}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 px-4 py-2 bg-tech-blue/10 text-tech-blue rounded-lg hover:bg-tech-blue/20 transition-colors"
+                    whileHover={{ scale: 1.05 }}
+                  >
+                    {link.icon === 'github' ? <Github size={18} /> : <Globe size={18} />}
+                    {link.name}
+                  </motion.a>
+                ))}
               </div>
             </div>
           </motion.div>
