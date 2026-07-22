@@ -55,7 +55,7 @@ export default function VideoSection() {
         >
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">视频介绍</h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            屏幕录制展示项目操作过程，直观呈现技术能力
+            屏幕录制展示项目，直观呈现
           </p>
         </motion.div>
 
@@ -69,10 +69,10 @@ export default function VideoSection() {
             <video
               ref={videoRef}
               className="w-full aspect-video"
-              poster="/video/环境检测工具.mp4#t=1"
+              poster="/blog/video/环境检测工具.mp4#t=1"
               onEnded={() => setIsPlaying(false)}
             >
-              <source src="/video/环境检测工具.mp4" type="video/mp4" />
+              <source src="/blog/video/环境检测工具.mp4" type="video/mp4" />
             </video>
 
             <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-tech-blue/10 to-tech-green/10 pointer-events-none">

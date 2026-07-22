@@ -89,6 +89,60 @@ import { contactInfo, socialLinks } from '../data/contact';
 
 ---
 
+## 问题2：视频播放无反应（本地和线上都无法播放）
+
+### 问题描述
+视频介绍区域点击播放按钮后没有反应，本地开发服务器和 GitHub Pages 都无法播放视频。
+
+### 问题原因
+由于 `vite.config.ts` 中设置了 `base: '/blog/'`，视频路径需要加上 `/blog/` 前缀才能正确访问。原代码中视频路径使用的是 `/video/xxx.mp4`，导致请求返回 404。
+
+### 解决步骤
+
+#### 步骤1：排查问题
+在本地开发服务器中测试视频文件是否可访问：
+
+```powershell
+# 测试不带前缀的路径（返回 404）
+Invoke-WebRequest "http://localhost:5173/video/环境检测工具.mp4" -UseBasicParsing | Select-Object StatusCode
+
+# 测试带前缀的路径（返回 200）
+Invoke-WebRequest "http://localhost:5173/blog/video/环境检测工具.mp4" -UseBasicParsing | Select-Object StatusCode
+```
+
+#### 步骤2：修改视频路径
+打开 `src/components/VideoSection.tsx`，修改 `<video>` 标签的路径：
+
+```tsx
+// 修改前
+<video
+  poster="/video/环境检测工具.mp4#t=1"
+>
+  <source src="/video/环境检测工具.mp4" type="video/mp4" />
+</video>
+
+// 修改后
+<video
+  poster="/blog/video/环境检测工具.mp4#t=1"
+>
+  <source src="/blog/video/环境检测工具.mp4" type="video/mp4" />
+</video>
+```
+
+#### 步骤3：本地验证
+启动开发服务器，访问 `http://localhost:5173/blog`，确认视频可以正常播放。
+
+### 验证结果
+修改后，本地开发服务器和 GitHub Pages 都能正常播放视频。
+
+### 知识点总结
+1. **Vite base 配置**：当设置 `base` 路径时，所有静态资源路径都需要加上这个前缀
+2. **public 目录**：Vite 会将 `public` 目录下的文件原样复制到构建输出目录
+3. **资源路径测试**：遇到资源加载问题时，先通过 HTTP 请求测试资源是否可访问
+4. **本地优先验证**：部署前应先在本地验证功能是否正常
+
+---
+
 ## 格式说明
 
 ### 问题记录格式

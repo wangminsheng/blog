@@ -40,9 +40,11 @@ export default function Header() {
             className="text-xl font-bold text-tech-blue flex items-center gap-2"
             whileHover={{ scale: 1.05 }}
           >
-            <span className="w-8 h-8 bg-tech-blue rounded-lg flex items-center justify-center">
-              <span className="text-white text-sm">W</span>
-            </span>
+            <img
+              src="/blog/images/logo.png"
+              alt="汪民胜"
+              className="w-8 h-8 rounded-lg object-cover"
+            />
             <span className="text-white">汪民胜</span>
           </motion.a>
 

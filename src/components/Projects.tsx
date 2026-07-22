@@ -89,7 +89,7 @@ export default function Projects() {
 
                 <div className="flex items-center gap-2 pt-4 border-t border-gray-800">
                   <a
-                    href="#"
+                    href="#video"
                     className="flex items-center gap-1 text-tech-blue text-sm font-medium hover:text-tech-blue/80 transition-colors"
                   >
                     <Code size={14} />

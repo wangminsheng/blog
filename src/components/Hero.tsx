@@ -42,12 +42,16 @@ export default function Hero() {
         >
           <div className="relative">
             <motion.div
-              className="w-32 h-32 rounded-full bg-gradient-to-br from-tech-blue to-tech-green flex items-center justify-center"
+              className="w-32 h-32 rounded-full bg-gradient-to-br from-tech-blue to-tech-green p-1"
               whileHover={{ scale: 1.05 }}
               animate={{ boxShadow: ['0 0 20px rgba(59,130,246,0.3)', '0 0 40px rgba(59,130,246,0.5)', '0 0 20px rgba(59,130,246,0.3)'] }}
               transition={{ duration: 3, repeat: Infinity }}
             >
-              <span className="text-5xl font-bold text-white">W</span>
+              <img
+                src="/blog/images/logo.png"
+                alt="汪民胜"
+                className="w-full h-full rounded-full object-cover"
+              />
             </motion.div>
             <motion.div
               className="absolute -bottom-2 -right-2 w-8 h-8 bg-tech-green rounded-full flex items-center justify-center"
