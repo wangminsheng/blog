@@ -6,6 +6,8 @@ export const contactInfo = {
   location: '上海|松江',
   wechat: 'hayden__wang',
   wechatQr: '/blog/images/wechat_qr.png',
+  groupName: '互助群',
+  groupQr: '/blog/images/互助群16.png',
   summary: '10年+运维经验，精通Windows/Linux运维、熟悉Electron应用开发、自动化工具开发，熟悉Kubernetes和Docker容器技术，具备优秀的问题分析和解决能力，有强烈的自驱力和学习热情。',
   skills: ['Electron', 'React', 'TypeScript', 'PowerShell', 'Docker', 'Kubernetes', 'Go', 'Rust'],
 };
