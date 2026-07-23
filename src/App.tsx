@@ -22,9 +22,11 @@ function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-2">
-              <span className="w-6 h-6 bg-tech-blue rounded flex items-center justify-center">
-                <span className="text-white text-xs font-bold">W</span>
-              </span>
+              <img
+                src="/blog/images/logo.png"
+                alt="汪民胜"
+                className="w-6 h-6 rounded object-cover"
+              />
               <span className="text-white font-medium">汪民胜</span>
             </div>
             <p className="text-gray-500 text-sm">
