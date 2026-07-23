@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Mail, Phone, MapPin, Download, Github, FileText, Globe, MessageCircle, Users } from 'lucide-react';
-import { contactInfo, socialLinks } from '../data/contact';
+import { Mail, Phone, MapPin, Download, Github, FileText, Globe, MessageCircle, Users, ExternalLink } from 'lucide-react';
+import { contactInfo, socialLinks, resumes } from '../data/contact';
 
 export default function Contact() {
   const [showWechatQr, setShowWechatQr] = useState(false);
@@ -124,50 +124,44 @@ export default function Contact() {
               <h3 className="text-xl font-semibold text-white mb-6">下载简历</h3>
               
               <div className="space-y-4">
-                <motion.a
-                  href="#"
-                  className="flex items-center gap-4 p-4 bg-tech-blue/10 rounded-lg border border-tech-blue/30 hover:bg-tech-blue/20 transition-colors"
-                  whileHover={{ scale: 1.02 }}
-                >
-                  <div className="w-12 h-12 rounded-lg bg-tech-blue/20 flex items-center justify-center">
-                    <FileText size={24} className="text-tech-blue" />
-                  </div>
-                  <div className="flex-1">
-                    <p className="text-white font-medium">汪民胜简历 - 运维工程师</p>
-                    <p className="text-gray-400 text-sm">PDF 格式 · 2页</p>
-                  </div>
-                  <Download size={20} className="text-tech-blue" />
-                </motion.a>
-
-                <motion.a
-                  href="#"
-                  className="flex items-center gap-4 p-4 bg-tech-green/10 rounded-lg border border-tech-green/30 hover:bg-tech-green/20 transition-colors"
-                  whileHover={{ scale: 1.02 }}
-                >
-                  <div className="w-12 h-12 rounded-lg bg-tech-green/20 flex items-center justify-center">
-                    <FileText size={24} className="text-tech-green" />
-                  </div>
-                  <div className="flex-1">
-                    <p className="text-white font-medium">汪民胜简历 - 云平台运维</p>
-                    <p className="text-gray-400 text-sm">PDF 格式 · 2页</p>
-                  </div>
-                  <Download size={20} className="text-tech-green" />
-                </motion.a>
-
-                <motion.a
-                  href="#"
-                  className="flex items-center gap-4 p-4 bg-tech-orange/10 rounded-lg border border-tech-orange/30 hover:bg-tech-orange/20 transition-colors"
-                  whileHover={{ scale: 1.02 }}
-                >
-                  <div className="w-12 h-12 rounded-lg bg-tech-orange/20 flex items-center justify-center">
-                    <FileText size={24} className="text-tech-orange" />
-                  </div>
-                  <div className="flex-1">
-                    <p className="text-white font-medium">汪民胜简历 - GPU虚拟化</p>
-                    <p className="text-gray-400 text-sm">PDF 格式 · 2页</p>
-                  </div>
-                  <Download size={20} className="text-tech-orange" />
-                </motion.a>
+                {resumes.map((resume) => (
+                  <motion.div
+                    key={resume.id}
+                    className={`flex items-center gap-4 p-4 bg-tech-${resume.color}/10 rounded-lg border border-tech-${resume.color}/30 hover:bg-tech-${resume.color}/20 transition-colors`}
+                    whileHover={{ scale: 1.02 }}
+                  >
+                    <div className={`w-12 h-12 rounded-lg bg-tech-${resume.color}/20 flex items-center justify-center`}>
+                      <FileText size={24} className={`text-tech-${resume.color}`} />
+                    </div>
+                    <div className="flex-1">
+                      <p className="text-white font-medium">{resume.title}</p>
+                      <p className="text-gray-400 text-sm">{resume.subtitle}</p>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <motion.a
+                        href={resume.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`p-2 rounded-lg bg-tech-${resume.color}/20 hover:bg-tech-${resume.color}/30 transition-colors`}
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.95 }}
+                        title="在浏览器中打开"
+                      >
+                        <ExternalLink size={18} className={`text-tech-${resume.color}`} />
+                      </motion.a>
+                      <motion.a
+                        href={resume.url}
+                        download
+                        className={`p-2 rounded-lg bg-tech-${resume.color}/20 hover:bg-tech-${resume.color}/30 transition-colors`}
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.95 }}
+                        title="下载到本地"
+                      >
+                        <Download size={18} className={`text-tech-${resume.color}`} />
+                      </motion.a>
+                    </div>
+                  </motion.div>
+                ))}
               </div>
             </div>
 
