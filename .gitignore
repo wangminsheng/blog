@@ -12,3 +12,7 @@ build/
 *.swo
 *.tmp
 *.bak
+
+CHANGELOG.md
+PROBLEM_SOLVING.md
+DEPLOY_GUIDE.md
