@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Eye, EyeOff } from 'lucide-react';
 import { contactInfo } from '../data/contact';
 import { images } from '../assets/images';
+import { usePerformance } from '../hooks/usePerformance';
 
 const navItems = [
   { name: '首页', href: '#hero' },
@@ -17,6 +18,13 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [showUnemployed, setShowUnemployed] = useState(false);
+  const loadTime = usePerformance();
+
+  const getLoadTimeColor = (time: number) => {
+    if (time < 100) return 'text-green-400';
+    if (time < 250) return 'text-yellow-400';
+    return 'text-red-400';
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -95,18 +103,31 @@ export default function Header() {
             </div>
           </motion.a>
 
-          <nav className="hidden md:flex items-center gap-8">
-            {navItems.map((item) => (
-              <motion.a
-                key={item.name}
-                href={item.href}
-                className="text-gray-300 hover:text-tech-blue transition-colors text-sm font-medium"
-                whileHover={{ scale: 1.1, y: -2 }}
+          <div className="hidden md:flex items-center gap-8">
+            <nav className="flex items-center gap-8">
+              {navItems.map((item) => (
+                <motion.a
+                  key={item.name}
+                  href={item.href}
+                  className="text-gray-300 hover:text-tech-blue transition-colors text-sm font-medium"
+                  whileHover={{ scale: 1.1, y: -2 }}
+                >
+                  {item.name}
+                </motion.a>
+              ))}
+            </nav>
+            
+            {loadTime !== null && (
+              <motion.span
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className={`text-xs font-mono ${getLoadTimeColor(loadTime)} bg-gray-800/50 px-2 py-1 rounded`}
+                title={`页面加载耗时: ${loadTime}ms`}
               >
-                {item.name}
-              </motion.a>
-            ))}
-          </nav>
+                ⚡ {loadTime}ms
+              </motion.span>
+            )}
+          </div>
 
           <button
             className="md:hidden text-gray-300 hover:text-tech-blue"
