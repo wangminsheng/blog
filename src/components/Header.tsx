@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Eye, EyeOff } from 'lucide-react';
 import { contactInfo } from '../data/contact';
+import { images } from '../assets/images';
 
 const navItems = [
   { name: '首页', href: '#hero' },
@@ -64,7 +65,7 @@ export default function Header() {
             whileHover={{ scale: 1.05 }}
           >
             <img
-              src="/blog/images/logo.png"
+              src={images.logo}
               alt="汪民胜"
               className="w-8 h-8 rounded-lg object-cover"
             />

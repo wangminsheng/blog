@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { ChevronDown, Terminal, Code2, Cloud } from 'lucide-react';
 import { contactInfo } from '../data/contact';
+import { images } from '../assets/images';
 
 export default function Hero() {
   return (
@@ -48,7 +49,7 @@ export default function Hero() {
               transition={{ duration: 3, repeat: Infinity }}
             >
               <img
-                src="/blog/images/logo.png"
+                src={images.logo}
                 alt="汪民胜"
                 className="w-full h-full rounded-full object-cover"
               />

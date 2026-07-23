@@ -5,6 +5,7 @@ import Projects from './components/Projects';
 import Timeline from './components/Timeline';
 import VideoSection from './components/VideoSection';
 import Contact from './components/Contact';
+import { images } from './assets/images';
 
 function App() {
   return (
@@ -23,7 +24,7 @@ function App() {
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-2">
               <img
-                src="/blog/images/logo.png"
+                src={images.logo}
                 alt="汪民胜"
                 className="w-6 h-6 rounded object-cover"
               />
