@@ -97,7 +97,7 @@ export default function Header() {
                   animate={{ opacity: 1, scale: 1 }}
                   className="px-2 py-0.5 rounded-full bg-tech-orange/20 text-tech-orange text-xs font-medium"
                 >
-                  待业 {unemployedDays} 天
+                  待业第 {unemployedDays} 天
                 </motion.span>
               )}
             </div>
