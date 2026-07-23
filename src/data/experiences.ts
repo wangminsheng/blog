@@ -27,7 +27,7 @@ export const experiences: Experience[] = [
   {
     id: '3',
     year: '2012 - 2018',
-    company: '某软件公司',
+    company: '天霆云计算科技有限公司',
     position: '竞品分析师',
     projects: ['-'],
     achievements: ['部署市面上各种VDI环境','分析竞品优劣势，给产品提供参考，增强产品市场竞争力'],

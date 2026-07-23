@@ -1,29 +1,21 @@
 import { images } from '../assets/images';
-import resumeOps from '../assets/pdf/汪民胜简历-运维工程师.pdf';
-import resumeCloud from '../assets/pdf/汪民胜简历-云平台运维工程师.pdf';
-import resumeGpu from '../assets/pdf/汪民胜简历-GPU虚拟化运维.pdf';
+import resumeOps from '../assets/pdf/汪民胜简历-运维方向.pdf';
+import resumeDevops from '../assets/pdf/Wang Minsheng Resume - DevOps.pdf';
 
 export const resumes = [
   {
     id: 'ops',
-    title: '汪民胜简历 - 运维工程师',
+    title: '汪民胜简历 - 运维方向',
     subtitle: 'PDF 格式',
     url: resumeOps,
     color: 'blue',
   },
   {
-    id: 'cloud',
-    title: '汪民胜简历 - 云平台运维',
+    id: 'devops',
+    title: 'Wang Minsheng Resume - DevOps',
     subtitle: 'PDF 格式',
-    url: resumeCloud,
+    url: resumeDevops,
     color: 'green',
-  },
-  {
-    id: 'gpu',
-    title: '汪民胜简历 - GPU虚拟化',
-    subtitle: 'PDF 格式',
-    url: resumeGpu,
-    color: 'orange',
   },
 ];
 
