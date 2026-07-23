@@ -1,8 +1,11 @@
-import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Download, Github, FileText, Globe } from 'lucide-react';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Mail, Phone, MapPin, Download, Github, FileText, Globe, MessageCircle } from 'lucide-react';
 import { contactInfo, socialLinks } from '../data/contact';
 
 export default function Contact() {
+  const [showWechatQr, setShowWechatQr] = useState(false);
+
   return (
     <section id="contact" className="py-20 bg-tech-dark relative">
       <div className="absolute inset-0 bg-gradient-to-t from-tech-darker via-transparent to-transparent" />
@@ -57,6 +60,22 @@ export default function Contact() {
                   <div>
                     <p className="text-gray-400 text-sm">所在地</p>
                     <p className="text-white">{contactInfo.location}</p>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-lg bg-tech-green/10 flex items-center justify-center">
+                    <MessageCircle size={24} className="text-tech-green" />
+                  </div>
+                  <div>
+                    <p className="text-gray-400 text-sm">微信</p>
+                    <button
+                      onClick={() => setShowWechatQr(true)}
+                      className="text-tech-green hover:text-tech-green/80 transition-colors flex items-center gap-2"
+                    >
+                      <span>{contactInfo.wechat}</span>
+                      <span className="text-xs opacity-70">点击查看二维码</span>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -143,6 +162,46 @@ export default function Contact() {
           </motion.div>
         </div>
       </div>
+
+      <AnimatePresence>
+        {showWechatQr && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm"
+            onClick={() => setShowWechatQr(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              transition={{ type: 'spring', damping: 25 }}
+              onClick={(e) => e.stopPropagation()}
+              className="bg-tech-darker rounded-2xl p-6 border border-gray-700 shadow-2xl"
+            >
+              <div className="text-center">
+                <h3 className="text-xl font-semibold text-white mb-4">微信二维码</h3>
+                <div className="bg-white p-2 rounded-xl inline-block">
+                  <img
+                    src={contactInfo.wechatQr}
+                    alt="微信二维码"
+                    className="w-64 h-64 object-cover"
+                  />
+                </div>
+                <p className="text-tech-green mt-4 font-medium">{contactInfo.wechat}</p>
+                <p className="text-gray-400 text-sm mt-2">扫码添加微信</p>
+                <button
+                  onClick={() => setShowWechatQr(false)}
+                  className="mt-4 px-6 py-2 bg-tech-blue/20 text-tech-blue rounded-lg hover:bg-tech-blue/30 transition-colors"
+                >
+                  关闭
+                </button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
