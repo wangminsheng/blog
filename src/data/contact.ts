@@ -1,6 +1,7 @@
 export const contactInfo = {
   name: '汪民胜',
   title: '全栈运维工程师',
+  leaveDate: '2026-07-18T00:00:00',
   email: 'yelang007sheng@163.com',
   phone: '147-8257-0230',
   location: '上海|松江',

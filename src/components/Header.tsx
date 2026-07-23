@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Eye, EyeOff } from 'lucide-react';
+import { contactInfo } from '../data/contact';
 
 const navItems = [
   { name: '首页', href: '#hero' },
@@ -14,6 +15,7 @@ const navItems = [
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [showUnemployed, setShowUnemployed] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,6 +24,27 @@ export default function Header() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const getUnemployedDays = () => {
+    const today = new Date().toDateString();
+    const cachedDate = localStorage.getItem('unemployed_date');
+    const cachedDays = localStorage.getItem('unemployed_days');
+
+    if (cachedDate === today && cachedDays) {
+      return parseInt(cachedDays, 10);
+    }
+
+    const leaveDate = new Date(contactInfo.leaveDate).getTime();
+    const now = new Date().getTime();
+    const days = Math.floor((now - leaveDate) / (1000 * 60 * 60 * 24));
+
+    localStorage.setItem('unemployed_date', today);
+    localStorage.setItem('unemployed_days', days.toString());
+
+    return days;
+  };
+
+  const unemployedDays = getUnemployedDays();
 
   return (
     <motion.header
@@ -46,6 +69,29 @@ export default function Header() {
               className="w-8 h-8 rounded-lg object-cover"
             />
             <span className="text-white">汪民胜</span>
+            <div className="flex items-center gap-1">
+              <motion.button
+                onClick={(e) => {
+                  e.preventDefault();
+                  setShowUnemployed(!showUnemployed);
+                }}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                className="p-1 rounded-full bg-tech-orange/10 text-tech-orange hover:bg-tech-orange/20 transition-colors"
+                title={showUnemployed ? '隐藏待业时间' : '显示待业时间'}
+              >
+                {showUnemployed ? <Eye size={14} /> : <EyeOff size={14} />}
+              </motion.button>
+              {showUnemployed && (
+                <motion.span
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="px-2 py-0.5 rounded-full bg-tech-orange/20 text-tech-orange text-xs font-medium"
+                >
+                  待业 {unemployedDays} 天
+                </motion.span>
+              )}
+            </div>
           </motion.a>
 
           <nav className="hidden md:flex items-center gap-8">
