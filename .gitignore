@@ -1,0 +1,22 @@
+node_modules/
+dist/
+build/
+.env
+.env.local
+.env.production
+.DS_Store
+*.log
+.vscode/
+.idea/
+*.swp
+*.swo
+*.tmp
+*.bak
+
+CHANGELOG.md
+PROBLEM_SOLVING.md
+DEPLOY_GUIDE.md
+
+# Docker 本地配置（含代理信息，不提交到远程）
+daemon.json
+http-proxy.conf
